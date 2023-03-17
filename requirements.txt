@@ -13,3 +13,4 @@ autoflake==2.0.2
 
 # Core.
 django==4.1.7
+

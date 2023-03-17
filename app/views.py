@@ -1,22 +1,21 @@
 from rest_framework import generics
-from .serializers import *
-from .models import *
-from rest_framework import generics
 
 from .models import *
 from .serializers import *
 
 
 #CRUD operation
-class ListTodo(generics.ListAPIView):     #read
+
+
+class ListTodo(generics.ListAPIView):
     queryset = ToDo.objects.all()
     serializer_class = ToDoSerializer
 
-class DetailToDo(generics.RetrieveUpdateAPIView):  #udate
+class DetailToDo(generics.RetrieveUpdateAPIView):
     queryset = ToDo.objects.all()
     serializer_class = ToDoSerializer
 
-class CreateTodo(generics.CreateAPIView):    # create
+class CreateTodo(generics.CreateAPIView):
     queryset = ToDo.objects.all()
     serializer_class = ToDoSerializer
 
