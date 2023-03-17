@@ -1,27 +1,30 @@
-from rest_framework import generics
+from rest_framework.generics import CreateAPIView
+from rest_framework.generics import DestroyAPIView
+from rest_framework.generics import ListAPIView
+from rest_framework.generics import UpdateAPIView
 
-from .models import ToDo
-from .serializers import ToDoSerializer
+from app.models import ToDo
+from app.serializers import ToDoSerializer
 
 
 #CRUD operation
 
 
-class ListTodo(generics.ListAPIView):
+class ListToDo(ListAPIView):
     queryset = ToDo.objects.all()
     serializer_class = ToDoSerializer
 
-# class DetailToDo(generics.RetrieveUpdateAPIView):
-    # queryset = ToDo.objects.all()
-    # serializer_class = ToDoSerializer
-
-class CreateTodo(generics.CreateAPIView):
+class UpdateToDo(UpdateAPIView):
     queryset = ToDo.objects.all()
     serializer_class = ToDoSerializer
 
-# class DeleteToDo(generics.DestroyAPIView):   # delete
-    # queryset = ToDo.objects.all()
-    # serializer_class = ToDoSerializer
+class CreateTodo(CreateAPIView):
+    queryset = ToDo.objects.all()
+    serializer_class = ToDoSerializer
+
+class DeleteToDo(DestroyAPIView):   # delete
+    queryset = ToDo.objects.all()
+    serializer_class = ToDoSerializer
 
 
 

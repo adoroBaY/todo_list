@@ -3,9 +3,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # path('<int:pk>/', DetailToDo.as_view(), name="details"),
-    path('list', views.ListTodo.as_view(), name="list"),
-    # path('update/<int:pk>/', UpdateToDo.as_view(), name="update"),
-    path('', views.CreateTodo.as_view()),
-    # path('delete/<int:pk>', DeleteToDo.as_view(), name="delete")
+    path("", views.ListToDo.as_view(), name="todo_list"),
+    path("create/", views.CreateTodo.as_view(), name="todo_create"),
+    path("update/<int:pk>/", views.UpdateToDo.as_view(), name="update"),
+    path("delete/<int:pk>/", views.DeleteToDo.as_view(), name="delete")
 ]
