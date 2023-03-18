@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-2s-w3$p7aq!u2iflu-ed#_8(xea9pxjoh5iavowa*j+ire7ya6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['b7de-62-16-2-65.eu.ngrok.io']
+ALLOWED_HOSTS = ['b739-62-16-2-65.eu.ngrok.io']
 
 # Application definition
 
@@ -35,11 +35,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # apps
-    'app',
-    # third party apps
+    'app.apps.AppConfig',
     'rest_framework',
+    'coreapi',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -119,3 +122,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
