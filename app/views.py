@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -22,7 +23,16 @@ class ListToDo(APIView):
         else:
             return Response(serializer.errors, status=400)
 
-
+@csrf_exempt
+def create_todo(request):
+    if request.method == 'POST':
+        name = request.POST.get('name', '')
+        description = request.POST.get('description', False)
+        ToDo = ToDo.objects.create(name=name, description=description)
+        serializer = ToDoSerializer(ToDo)
+        return Response(serializer.data, status=201)
+    else:
+        return Response({'error': 'Invalid request method'}, status=405)
 
 
 
