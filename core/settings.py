@@ -24,8 +24,12 @@ SECRET_KEY = 'django-insecure-2s-w3$p7aq!u2iflu-ed#_8(xea9pxjoh5iavowa*j+ire7ya6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',
-                 '03b0-62-16-2-65.eu.ngrok.io',]
+ALLOWED_HOSTS = ['https://todo-list-pi-flax.vercel.app/',
+                 '63b4-62-16-2-65.eu.ngrok.io',
+                 'localhost',
+                 'http://localhost:3000 '
+
+]
 
 # Application definition
 
@@ -39,13 +43,21 @@ INSTALLED_APPS = [
     'app.apps.AppConfig',
     'rest_framework',
     'coreapi',
+    'corsheaders',
 ]
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = True
+
+
+CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -123,3 +135,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
