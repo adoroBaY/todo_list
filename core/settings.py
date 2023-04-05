@@ -24,12 +24,7 @@ SECRET_KEY = 'django-insecure-2s-w3$p7aq!u2iflu-ed#_8(xea9pxjoh5iavowa*j+ire7ya6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://todo-list-pi-flax.vercel.app/',
-                 '63b4-62-16-2-65.eu.ngrok.io',
-                 'localhost',
-                 'http://localhost:3000 '
-
-]
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -40,8 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app.apps.AppConfig',
     'rest_framework',
+    'rest_framework.authtoken',
+    'app',
     'coreapi',
     'corsheaders',
 ]
